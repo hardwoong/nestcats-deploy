@@ -9,26 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppController = void 0;
-const common_1 = require("@nestjs/common");
-const app_service_1 = require("./app.service");
-let AppController = class AppController {
-    constructor(appService) {
-        this.appService = appService;
-    }
-    getHello() {
-        return 'hello wold';
-    }
-};
+exports.ReadOnlyCatDto = void 0;
+const swagger_1 = require("@nestjs/swagger");
+const cats_schema_1 = require("../cats.schema");
+class ReadOnlyCatDto extends (0, swagger_1.PickType)(cats_schema_1.Cat, ['email', 'name']) {
+}
 __decorate([
-    (0, common_1.Get)(),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
-], AppController.prototype, "getHello", null);
-AppController = __decorate([
-    (0, common_1.Controller)(),
-    __metadata("design:paramtypes", [app_service_1.AppService])
-], AppController);
-exports.AppController = AppController;
-//# sourceMappingURL=app.controller.js.map
+    (0, swagger_1.ApiProperty)({
+        example: '3280199',
+        description: 'id',
+    }),
+    __metadata("design:type", String)
+], ReadOnlyCatDto.prototype, "id", void 0);
+exports.ReadOnlyCatDto = ReadOnlyCatDto;
+//# sourceMappingURL=cat.dto.js.map
